@@ -1,6 +1,4 @@
 
-
-import Link from "next/link"
 import { useState, useRef, useEffect } from "react"
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
@@ -193,14 +191,14 @@ export default function SectionHero() {
                 Navigation
               </span>
               {["Home", "Models", "Research", "Company"].map((item) => (
-                <Link
+                <a
                   key={item}
                   href="#"
                   className="text-white hover:text-emerald-900 transition-colors uppercase tracking-tighter font-semibold leading-[0.95]
                              text-[10vw] sm:text-[6vw] md:text-[5vw] lg:text-[3.5vw] xl:text-[3vw]"
                 >
                   {item}
-                </Link>
+                </a>
               ))}
             </div>
 
@@ -209,14 +207,14 @@ export default function SectionHero() {
                 Products
               </span>
               {["Moravec 04", "Paradox", "Legacy", "Parts"].map((item) => (
-                <Link
+                <a
                   key={item}
                   href="#"
                   className="text-white hover:text-emerald-900 transition-colors uppercase tracking-tighter font-semibold leading-[0.95]
                              text-[10vw] sm:text-[6vw] md:text-[5vw] lg:text-[3.5vw] xl:text-[3vw]"
                 >
                   {item}
-                </Link>
+                </a>
               ))}
             </div>
 
@@ -225,14 +223,14 @@ export default function SectionHero() {
                 Social
               </span>
               {["Twitter", "Instagram", "LinkedIn", "Youtube"].map((item) => (
-                <Link
+                <a
                   key={item}
                   href="#"
                   className="text-white hover:text-emerald-900 transition-colors uppercase tracking-tighter font-semibold leading-[0.95]
                             text-[10vw] sm:text-[6vw] md:text-[5vw] lg:text-[3.5vw] xl:text-[3vw]"
                 >
                   {item}
-                </Link>
+                </a>
               ))}
             </div>
           </div>
@@ -253,9 +251,9 @@ export default function SectionHero() {
 
       {/* HEADER */}
       <header className="flex-none flex items-center justify-between w-full py-4 sm:py-6 lg:py-8 px-[10px] relative z-40">
-        <Link href="/" className="hover:opacity-70 transition-opacity opacity-100">
+        <a href="/" className="hover:opacity-70 transition-opacity opacity-100">
           <img src="images/logo-civitas-white-3D-RMBG.png" alt="Civitas Logo" width={600} height={600} className="h-32 w-auto opacity-100" />
-        </Link>
+        </a>
         <button
           onClick={() => setIsMenuOpen(true)}
           className={`relative flex h-8 w-8 items-center justify-center hover:opacity-70 transition-opacity duration-300 group ${
