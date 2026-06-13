@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+/* Reset de base */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  /* Pas de background-color ici — le fond vient de BasePage (iam-lock.webp)
+     Un background opaque sur body tuerait le z-index:-3 de l'image de fond */
+  font-family: system-ui, -apple-system, sans-serif;
+  overflow: hidden;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  /* Fond de secours visible uniquement si BasePage ne monte pas */
+  background-color: #0f172a;
+}
+
+/* Les variables CSS du thème sont injectées dynamiquement par ThemeLoader */
+/* Voir lib/theme/themeLoader.tsx — injecte :root { --primary-... } en batch */
