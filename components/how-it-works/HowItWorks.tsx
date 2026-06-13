@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import Image from "next/image"
+
 import { cn } from "@/lib/utils"
 import { ChevronDown, ChevronUp } from "lucide-react"
 import { steps } from "./data"
@@ -159,13 +159,12 @@ export default function HowItWorks() {
                   </ul>
                 </div>
                 <div className="flex items-center justify-center h-full">
-                  <Image
+                  <img
                     src={step.image || "/placeholder.svg"}
                     alt={step.imageAlt}
                     width={500}
                     height={600}
                     className="rounded-lg object-cover h-[80%] w-auto"
-                    priority={index === 0}
                   />
                 </div>
               </div>

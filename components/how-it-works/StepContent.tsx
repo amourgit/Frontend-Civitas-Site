@@ -1,6 +1,6 @@
 "use client"
 
-import Image from "next/image"
+
 import { ChevronDown, ChevronUp } from 'lucide-react'
 import { cn } from "@/lib/utils"
 import { Step } from "./types"
@@ -57,13 +57,12 @@ export function StepContent({ steps, activeStep, goToPrevStep, goToNextStep }: S
             </ul>
           </div>
           <div className="flex items-center justify-center h-full">
-            <Image
+            <img
               src={step.image || "/placeholder.svg"}
               alt={step.imageAlt}
               width={500}
               height={600}
               className="rounded-lg object-cover h-[80%] w-auto"
-              priority={index === 0}
             />
           </div>
         </div>
