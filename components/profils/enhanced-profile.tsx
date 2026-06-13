@@ -1,8 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import Image // TODO: next/image migré — utiliser <img> ou une lib React
-// from 'react-router-dom'
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { SocialLinks } from "@/components/compte/social-links"
@@ -23,11 +21,10 @@ export function EnhancedProfile() {
         <div className="bg-gradient-to-r from-zinc-800/50 to-zinc-900/50 p-4 sm:p-6 flex flex-col items-center border-b border-zinc-800">
           <div className="flex flex-col sm:flex-col items-center w-full">
             <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden mb-4 border-2 border-cyan-400/20 ring-4 ring-zinc-800/50">
-              <Image
+              <img
                 src={personalInfo.avatar || "/placeholder.svg"}
                 alt={personalInfo.name}
-                fill
-                className="object-cover"
+                className="absolute inset-0 w-full h-full object-cover"
               />
             </div>
             <div className="text-center">

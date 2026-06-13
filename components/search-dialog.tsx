@@ -7,8 +7,6 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import Image // TODO: next/image migré — utiliser <img> ou une lib React
-// from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
 export function SearchDialog() {
@@ -106,7 +104,7 @@ export function SearchDialog() {
                   {searchResults.recent.map((item) => (
                     <Link
                       key={item.id}
-                      href="#"
+                      to="#"
                       className="flex items-center gap-3 p-2 rounded-md hover:bg-zinc-800 transition"
                       onClick={() => setIsOpen(false)}
                     >
@@ -131,11 +129,11 @@ export function SearchDialog() {
                   {searchResults.games.map((game) => (
                     <Link
                       key={game.id}
-                      href="#"
+                      to="#"
                       className="flex items-center gap-4 p-2 rounded-md hover:bg-zinc-800 transition"
                       onClick={() => setIsOpen(false)}
                     >
-                      <Image
+                      <img
                         src={game.image || "/placeholder.svg"}
                         alt={game.title}
                         width={80}
@@ -172,7 +170,7 @@ export function SearchDialog() {
                   {searchResults.categories.map((category) => (
                     <Link
                       key={category.id}
-                      href="#"
+                      to="#"
                       className="flex items-center justify-between p-2 rounded-md hover:bg-zinc-800 transition"
                       onClick={() => setIsOpen(false)}
                     >
@@ -196,11 +194,11 @@ export function SearchDialog() {
                 {searchResults.games.map((game) => (
                   <Link
                     key={game.id}
-                    href="#"
+                    to="#"
                     className="flex items-center gap-4 p-2 rounded-md hover:bg-zinc-800 transition"
                     onClick={() => setIsOpen(false)}
                   >
-                    <Image
+                    <img
                       src={game.image || "/placeholder.svg"}
                       alt={game.title}
                       width={80}
@@ -235,7 +233,7 @@ export function SearchDialog() {
                 {searchResults.categories.map((category) => (
                   <Link
                     key={category.id}
-                    href="#"
+                    to="#"
                     className="flex items-center justify-between p-3 rounded-md hover:bg-zinc-800 transition"
                     onClick={() => setIsOpen(false)}
                   >

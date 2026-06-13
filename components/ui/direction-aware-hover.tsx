@@ -3,8 +3,6 @@
 import type React from "react"
 
 import { useRef, useState } from "react"
-import Image // TODO: next/image migré — utiliser <img> ou une lib React
-// from 'react-router-dom'
 import { AnimatePresence, motion } from "framer-motion"
 import { cn } from "@/lib/utils"
 
@@ -81,7 +79,7 @@ export const DirectionAwareHover = ({
               ease: "easeOut",
             }}
           >
-            <Image
+            <img
               alt="image"
               className={cn("h-full w-full object-cover scale-[1.15]", imageClassName)}
               width="1000"

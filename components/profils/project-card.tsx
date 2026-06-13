@@ -1,5 +1,3 @@
-import Image // TODO: next/image migré — utiliser <img> ou une lib React
-// from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { Card } from "@/components/ui/card"
 
@@ -12,14 +10,13 @@ interface ProjectCardProps {
 
 export function ProjectCard({ title, category, image, slug }: ProjectCardProps) {
   return (
-    <Link href={`/projects/${slug}`} className="block h-full">
+    <Link to={`/projects/${slug}`} className="block h-full">
       <Card className="bg-zinc-800/50 border-zinc-700 overflow-hidden group hover:border-cyan-500/50 transition-all h-full">
         <div className="relative h-40 sm:h-48 w-full overflow-hidden">
-          <Image
+          <img
             src={image || "/placeholder.svg"}
             alt={title}
-            fill
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
           <div className="absolute bottom-0 left-0 p-3 sm:p-4">

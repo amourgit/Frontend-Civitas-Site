@@ -1,7 +1,5 @@
 // components/cards/MemoizedProjectCard.tsx
 import React, { memo } from 'react';
-import Image // TODO: next/image migré — utiliser <img> ou une lib React
-// from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 export interface ProjectCard {
@@ -64,7 +62,7 @@ const MemberAvatars = memo<{
   <div className="flex -space-x-1 items-center">
     {members.slice(0, 3).map((member) => (
       <div key={member.id} className="relative flex-shrink-0">
-        <Image
+        <img
           src={member.avatar}
           alt={member.name}
           width={20}
@@ -155,7 +153,7 @@ export const MemoizedProjectCard = memo<ProjectCardProps>(({
   if (viewMode === 'list-simple') {
     return (
       <Link 
-        href={`/apps/community/${id}/infos?data=${projectData}`}
+        to={`/apps/community/${id}/infos?data=${projectData}`}
         className="block w-full"
       >
         <div
@@ -200,7 +198,7 @@ export const MemoizedProjectCard = memo<ProjectCardProps>(({
   if (viewMode === 'list-detailed') {
     return (
       <Link 
-        href={`/apps/community/${id}/infos?data=${projectData}`}
+        to={`/apps/community/${id}/infos?data=${projectData}`}
         className="block w-full"
       >
         <div
@@ -219,7 +217,7 @@ export const MemoizedProjectCard = memo<ProjectCardProps>(({
           <div className="p-4 flex items-center justify-between border-b border-white/10">
             <div className="flex items-center space-x-3 min-w-0 flex-1">
               <div className="relative flex-shrink-0">
-                <Image
+                <img
                   src={avatar}
                   alt={role}
                   width={40}
@@ -233,8 +231,6 @@ export const MemoizedProjectCard = memo<ProjectCardProps>(({
                     aspectRatio: '1/1'
                   }}
                   loading="lazy"
-                  placeholder="blur"
-                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKEgkfChQKHhVCGxoVEhcbGhsrGxkbGhsaGhsbGxsbHBsaGhsbGxsaGlsbGxsbGxv/2wBDAQcHBwoIChMKChMbGBsaGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxv/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
                 />
                 <div className={`absolute -bottom-0.5 -right-0.5 rounded-full border-2 border-white ${isOnline ? 'bg-green-400' : 'bg-gray-400'}`} style={{
                   width: '12px',
@@ -254,13 +250,11 @@ export const MemoizedProjectCard = memo<ProjectCardProps>(({
 
           {/* Cover Image */}
           <div className="relative h-32 overflow-hidden">
-            <Image
+            <img
               src={coverImage}
               alt={title}
-              fill
-              className="object-cover transition-transform duration-300 group-hover:scale-105"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
               loading="lazy"
-              sizes="100vw"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
           </div>
@@ -282,7 +276,7 @@ export const MemoizedProjectCard = memo<ProjectCardProps>(({
               <div className="flex items-center space-x-2 text-white/70">
                 <div className="flex -space-x-1">
                   {lastCommit.images.slice(0, 2).map((img, idx) => (
-                    <Image
+                    <img
                       key={idx}
                       src={img}
                       alt=""
@@ -306,7 +300,7 @@ export const MemoizedProjectCard = memo<ProjectCardProps>(({
   // Mode grille - version originale compacte
   return (
     <Link 
-      href={`/apps/community/${id}/infos?data=${projectData}`}
+      to={`/apps/community/${id}/infos?data=${projectData}`}
       className="block w-full h-full"
     >
       <div
@@ -327,7 +321,7 @@ export const MemoizedProjectCard = memo<ProjectCardProps>(({
         <div className="p-3 flex items-center justify-between">
           <div className="flex items-center space-x-3 min-w-0 flex-1">
             <div className="relative flex-shrink-0">
-              <Image
+              <img
                 src={avatar}
                 alt={role}
                 width={32}
@@ -341,8 +335,6 @@ export const MemoizedProjectCard = memo<ProjectCardProps>(({
                   aspectRatio: '1/1'
                 }}
                 loading="lazy"
-                placeholder="blur"
-                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKEgkfChQKHhVCGxoVEhcbGhsrGxkbGhsaGhsbGxsbHBsaGhsbGxsaGlsbGxsbGxv/2wBDAQcHBwoIChMKChMbGBsaGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxv/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
               />
               <div className={`absolute -bottom-0.5 -right-0.5 rounded-full border-2 border-white ${isOnline ? 'bg-green-400' : 'bg-gray-400'}`} style={{
                 width: '10px',
@@ -362,13 +354,11 @@ export const MemoizedProjectCard = memo<ProjectCardProps>(({
 
         {/* Cover Image optimisée */}
         <div className="relative h-24 mx-3 mb-3 rounded-lg overflow-hidden">
-          <Image
+          <img
             src={coverImage}
             alt={title}
-            fill
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
             loading="lazy"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
         </div>
@@ -390,7 +380,7 @@ export const MemoizedProjectCard = memo<ProjectCardProps>(({
             <div className="flex items-center space-x-2 text-white/70">
               <div className="flex -space-x-1">
                 {lastCommit.images.slice(0, 2).map((img, idx) => (
-                  <Image
+                  <img
                     key={idx}
                     src={img}
                     alt=""

@@ -1,7 +1,5 @@
 
 import { useRef, useEffect, useState, MouseEvent } from "react";
-import Image // TODO: next/image migré — utiliser <img> ou une lib React
-// from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { Particles } from "@/components/ui/particles";
 import { Button } from "@/components/ui/button";
@@ -90,24 +88,20 @@ export default function NotFound({
         ref={imageRef}
         className="absolute inset-0 w-full h-full transition-transform duration-300 ease-out will-change-transform pointer-events-none z-10"
       >
-        <Image
+        <img
           src={imageLight}
           alt="404 Light"
-          fill
-          className="object-contain dark:hidden"
-          priority
+          className="absolute inset-0 w-full h-full object-contain dark:hidden"
         />
-        <Image
+        <img
           src={imageDark}
           alt="404 Dark"
-          fill
-          className="object-contain hidden dark:block"
-          priority
+          className="absolute inset-0 w-full h-full object-contain hidden dark:block"
         />
       </div>
 
       <div className="relative z-30 mt-16 md:mt-0">
-        <Link href={buttonHref} onClick={onButtonClick}>
+        <Link to={buttonHref} onClick={onButtonClick}>
           <Button variant="default">{buttonText}</Button>
         </Link>
       </div>

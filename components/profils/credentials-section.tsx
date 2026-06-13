@@ -1,5 +1,3 @@
-import Image // TODO: next/image migré — utiliser <img> ou une lib React
-// from 'react-router-dom'
 import { Card, CardContent } from "@/components/ui/card"
 import { GraduationCap, Award } from "lucide-react"
 import { SkillTag } from "@/components/compte/skill-tag"
@@ -30,11 +28,10 @@ export function CredentialsSection() {
                   <div key={index} className="flex items-start bg-zinc-800/30 p-2 sm:p-3 rounded-lg">
                     {cert.logo && (
                       <div className="relative w-10 h-10 rounded overflow-hidden mr-3 flex-shrink-0 bg-zinc-800">
-                        <Image
+                        <img
                           src={cert.logo || "/placeholder.svg"}
                           alt={cert.issuer}
-                          fill
-                          className="object-contain p-1"
+                          className="absolute inset-0 w-full h-full object-contain p-1"
                         />
                       </div>
                     )}
@@ -62,11 +59,10 @@ export function CredentialsSection() {
                   <div key={index} className="flex items-start bg-zinc-800/30 p-2 sm:p-3 rounded-lg">
                     {edu.logo && (
                       <div className="relative w-10 h-10 rounded overflow-hidden mr-3 flex-shrink-0 bg-zinc-800">
-                        <Image
+                        <img
                           src={edu.logo || "/placeholder.svg"}
                           alt={edu.institution}
-                          fill
-                          className="object-contain p-1"
+                          className="absolute inset-0 w-full h-full object-contain p-1"
                         />
                       </div>
                     )}

@@ -1,7 +1,5 @@
 
 import { useEffect, useRef, useState } from "react";
-import Image // TODO: next/image migré — utiliser <img> ou une lib React
-// from 'react-router-dom';
 import { cn } from "@/lib/utils";
 
 const getFileExtension = (url: string): string =>
@@ -117,16 +115,12 @@ const VideoWithPlaceholder = ({
   return (
     <>
       {placeholder && (
-        <Image
+        <img
           src={placeholder}
           loading="eager"
-          priority
-          sizes="100vw"
           alt="Background placeholder"
           className={cn(className, { invisible: videoLoaded })}
-          quality={100}
           style={{ objectFit: "cover", objectPosition: "center" }}
-          fill
         />
       )}
       <video
@@ -162,15 +156,12 @@ const ImageMedia = ({
   }, [isActive, onEnded]);
 
   return (
-    <Image
-      priority
+    <img
       loading="eager"
       src={item.src}
       alt="Background"
       className={className}
-      sizes="100vw"
       style={{ objectFit: "cover", objectPosition: "center" }}
-      fill
     />
   );
 };
