@@ -16,6 +16,7 @@ gsap.registerPlugin(useGSAP)
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
 
   const menuRef = useRef<HTMLDivElement | null>(null)
   const menuLayersRef = useRef<HTMLDivElement | null>(null)
@@ -23,6 +24,13 @@ export default function Header() {
   const closeButtonRef = useRef<HTMLButtonElement | null>(null)
 
   const tl = useRef<gsap.core.Timeline | null>(null)
+
+  useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 20)
+    onScroll()
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
 
   useGSAP(() => {
     if (!menuRef.current || !menuLayersRef.current || !menuContentRef.current || !closeButtonRef.current) return
@@ -168,14 +176,18 @@ export default function Header() {
       </div>
 
       {/* HEADER */}
-      <header className="fixed top-0 left-0 right-0 flex items-center justify-between w-full py-4 sm:py-6 lg:py-8 px-[10px] z-[90] bg-black">
+      <header
+        className={`fixed top-0 left-0 right-0 flex items-center justify-between w-full py-2 px-4 sm:px-6 z-[90] transition-colors duration-300 ${
+          isScrolled ? "bg-black" : "bg-white"
+        }`}
+      >
         <Link to="/" className="hover:opacity-70 transition-opacity opacity-100">
           <img
-            src="images/logo-civitas-white-3D-RMBG.png"
+            src={isScrolled ? "images/logo-civitas-white-3D-RMBG.png" : "images/logo-civitas-black-3D-RMBG.png"}
             alt="Civitas Logo"
             width={600}
             height={600}
-            className="h-32 w-auto opacity-100"
+            className="h-16 w-auto opacity-100"
           />
         </Link>
         <button
@@ -185,8 +197,16 @@ export default function Header() {
           }`}
           aria-label="Ouvrir le menu"
         >
-          <span className="absolute h-[2px] w-[32px] bg-white translate-y-[-4px]" />
-          <span className="absolute h-[2px] w-[32px] bg-white translate-y-[4px]" />
+          <span
+            className={`absolute h-[2px] w-[32px] translate-y-[-4px] transition-colors duration-300 ${
+              isScrolled ? "bg-white" : "bg-black"
+            }`}
+          />
+          <span
+            className={`absolute h-[2px] w-[32px] translate-y-[4px] transition-colors duration-300 ${
+              isScrolled ? "bg-white" : "bg-black"
+            }`}
+          />
         </button>
       </header>
     </>
