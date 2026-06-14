@@ -81,6 +81,15 @@ function GlitchScene({ isHovered }: GlitchSceneProps) {
         meshRef.current.geometry.dispose()
         ;(meshRef.current.material as THREE.Material).dispose()
       }
+      // Le composer (et ses render targets/framebuffers GPU) etait recree
+      // a chaque changement de `texture` (survol du bouton) sans jamais
+      // etre dispose : fuite memoire GPU qui grossissait a chaque hover.
+      // On le dispose ici, avant qu'un nouveau composer ne soit cree au
+      // prochain run de cet effet (ou au demontage du composant).
+      composer.dispose?.()
+      if (composerRef.current === composer) {
+        composerRef.current = null
+      }
     }
   }, [gl, scene, camera, texture, size])
 
@@ -122,13 +131,18 @@ function GlitchScene({ isHovered }: GlitchSceneProps) {
 
   // Render using composer
   useEffect(() => {
+    let rafId: number
     const animate = () => {
       if (composerRef.current) {
         composerRef.current.render()
       }
-      requestAnimationFrame(animate)
+      rafId = requestAnimationFrame(animate)
     }
-    animate()
+    rafId = requestAnimationFrame(animate)
+    // Sans ce cleanup, cette boucle de rendu (composer.render() a 60fps,
+    // post-processing inclus) continuait indefiniment meme apres le
+    // demontage du composant.
+    return () => cancelAnimationFrame(rafId)
   }, [])
 
   return null

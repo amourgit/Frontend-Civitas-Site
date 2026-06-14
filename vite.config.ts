@@ -99,7 +99,7 @@ export default defineConfig({
   // ── Build requis pour que MF fonctionne ─────────────────
   build: {
     target:       'esnext',   // top-level await requis par vite-plugin-federation
-    minify:       false,       // debug en dev, activer en prod
+    minify:       'esbuild',  // bundle deploye (Vercel) non minifie auparavant
     cssCodeSplit: false,
   },
 });

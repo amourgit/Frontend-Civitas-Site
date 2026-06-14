@@ -1,52 +1,47 @@
 "use client"
 
-import { Suspense, lazy, useRef, useEffect } from "react"
+import { Suspense, lazy, useEffect, useRef, useState } from "react"
 const Spline = lazy(() => import("@splinetool/react-spline"))
 
 export function FloatingSplineAssistant() {
   const containerRef = useRef<HTMLDivElement>(null)
-  const splineRef = useRef<HTMLDivElement>(null)
+  const [isVisible, setIsVisible] = useState(false)
 
+  // La scene 3D Spline (runtime WebGL + asset .splinecode de plusieurs Mo,
+  // avec sa propre boucle de rendu permanente) ne se charge/initialise que
+  // lorsque cette section approche du viewport, au lieu de demarrer dès le
+  // premier rendu de la page (cette section est la 4e sur 14, hors-ecran
+  // au chargement initial).
   useEffect(() => {
     const container = containerRef.current
-    const splineEl = splineRef.current
-    if (!container || !splineEl) return
+    if (!container) return
 
-    const handleMouseMove = (e: MouseEvent) => {
-      // Get exact position of Spline container relative to viewport
-      const rect = splineEl.getBoundingClientRect()
-      
-      // Calculate mouse position relative to Spline container
-      const x = e.clientX - rect.left
-      const y = e.clientY - rect.top
-      
-      // Only dispatch if mouse is within container bounds
-      if (x >= 0 && y >= 0 && x <= rect.width && y <= rect.height) {
-        const syntheticEvent = new MouseEvent('mousemove', {
-          bubbles: true,
-          cancelable: true,
-          clientX: e.clientX,
-          clientY: e.clientY,
-          view: window,
-        })
-        splineEl.dispatchEvent(syntheticEvent)
-      }
-    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setIsVisible(true)
+          observer.disconnect()
+        }
+      },
+      { rootMargin: "200px" },
+    )
 
-    window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
+    observer.observe(container)
+    return () => observer.disconnect()
   }, [])
 
   return (
     <div ref={containerRef} className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] bg-transparent">
       {/* Spline Scene Container with explicit height */}
-      <div ref={splineRef} className="absolute inset-0 w-full h-full">
-        <Suspense fallback={null}>
-          <Spline
-            scene="https://prod.spline.design/UbM7F-HZcyTbZ4y3/scene.splinecode"
-            className="w-full h-full"
-          />
-        </Suspense>
+      <div className="absolute inset-0 w-full h-full">
+        {isVisible && (
+          <Suspense fallback={null}>
+            <Spline
+              scene="https://prod.spline.design/UbM7F-HZcyTbZ4y3/scene.splinecode"
+              className="w-full h-full"
+            />
+          </Suspense>
+        )}
       </div>
 
       {/* Robot Viewport - Top Left, Compact */}

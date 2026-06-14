@@ -85,6 +85,14 @@ function createNoise() {
   }
 }
 
+// createNoise() est une fonction pure (la table de permutation est une
+// constante figee, aucun Math.random()). On l'instancie UNE SEULE FOIS au
+// niveau module : la recreer a chaque rendu du composant produisait un
+// nouvel objet `noise` a chaque fois, ce qui faisait repartir le useEffect
+// (voir deps ci-dessous) -> nouvelle boucle requestAnimationFrame jamais
+// nettoyee -> accumulation de boucles d'animation en parallele.
+const noise = createNoise()
+
 const COLOR_SCHEME = {
   light: {
     particle: {
@@ -112,13 +120,13 @@ interface Particle {
 export default function ParticlesBackground({
   title = "Particles Background",
   subtitle = "Make your website stand out",
-  particleCount = 2000,
+  particleCount = 120,
   noiseIntensity = 0.003,
   particleSize = { min: 0.5, max: 2 },
   className,
 }: CyberBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const noise = createNoise()
+  const rafRef = useRef<number | null>(null)
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -183,18 +191,45 @@ export default function ParticlesBackground({
         ctx.fill()
       }
 
-      requestAnimationFrame(animate)
+      // On ne replanifie la frame suivante que si l'onglet/la page est
+      // visible : evite de faire tourner le canvas (et de chauffer le
+      // CPU/GPU, surtout sur mobile) quand l'utilisateur a quitte l'onglet.
+      if (!document.hidden) {
+        rafRef.current = requestAnimationFrame(animate)
+      } else {
+        rafRef.current = null
+      }
     }
 
-    animate()
+    rafRef.current = requestAnimationFrame(animate)
 
     const handleResize = () => {
       resizeCanvas()
     }
 
+    // Si l'onglet redevient visible et qu'aucune frame n'est planifiee
+    // (animation mise en pause ci-dessus), on la relance.
+    const handleVisibilityChange = () => {
+      if (!document.hidden && rafRef.current === null) {
+        rafRef.current = requestAnimationFrame(animate)
+      }
+    }
+
     window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
-  }, [particleCount, noiseIntensity, particleSize, noise])
+    document.addEventListener("visibilitychange", handleVisibilityChange)
+
+    return () => {
+      window.removeEventListener("resize", handleResize)
+      document.removeEventListener("visibilitychange", handleVisibilityChange)
+      if (rafRef.current !== null) {
+        cancelAnimationFrame(rafRef.current)
+        rafRef.current = null
+      }
+    }
+    // particleSize est un objet recree a chaque rendu (valeur par defaut) :
+    // on depend de ses champs primitifs plutot que de l'objet lui-meme,
+    // sinon cet effet (et donc la boucle RAF) repartirait a chaque rendu.
+  }, [particleCount, noiseIntensity, particleSize.min, particleSize.max])
 
   return (
     <div className={cn("relative overflow-hidden", "bg-white dark:bg-black", className)}>
