@@ -168,7 +168,7 @@ export default function Header() {
       </div>
 
       {/* HEADER */}
-      <header className="fixed top-0 left-0 right-0 flex items-center justify-between w-full py-4 sm:py-6 lg:py-8 px-[10px] z-[90]">
+      <header className="fixed top-0 left-0 right-0 flex items-center justify-between w-full py-4 sm:py-6 lg:py-8 px-[10px] z-[90] bg-black">
         <Link to="/" className="hover:opacity-70 transition-opacity opacity-100">
           <img
             src="images/logo-civitas-white-3D-RMBG.png"
