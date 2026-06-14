@@ -12,6 +12,8 @@ import { ThemeProvider } from '../../lib/theme';
 import { AuthProvider  } from '../../components/providers/AuthProvider';
 import ParticlesBackground from "../../components/kokonutui/particles-background"
 import VerticalMenu from "../../components/vertical-menu"
+import Header from "../../components/layouts/Header/header"
+import GlobalFooter from "../../components/layouts/Footer/global-footer"
 
 // ── Pages lazy ────────────────────────────────────────────────
 const HomePage = React.lazy(() => import('../pages/home/home'));
@@ -89,7 +91,13 @@ export default function CivitasApp({
     <ThemeProvider defaultTheme="default" enableDarkMode>
       <AuthProvider>
         <VerticalMenu />
-        <CivitasRoutes basePath={resolvedBase} />
+        <Header />
+        <div className="flex min-h-screen w-full flex-col bg-transparent">
+          <div className="flex-1 w-full">
+            <CivitasRoutes basePath={resolvedBase} />
+          </div>
+          <GlobalFooter />
+        </div>
       </AuthProvider>
     </ThemeProvider>
   );
