@@ -18,7 +18,7 @@ export default function SectionHistoryAITimeline() {
       title: "Conférence de Dartmouth",
       description:
         "John McCarthy, Marvin Minsky, Claude Shannon et Nathaniel Rochester organisent la conférence de Dartmouth. Le terme « Intelligence Artificielle » est officiellement créé.",
-      image: "https://upload.wikimedia.org/wikipedia/commons/9/91/Dartmouth_College_campus.jpg",
+      image: "history/dartmouth.jpeg",
     },
     {
       year: "1958",
@@ -26,7 +26,7 @@ export default function SectionHistoryAITimeline() {
       title: "Le Perceptron",
       description:
         "Frank Rosenblatt présente le Perceptron, premier réseau de neurones artificiels capable d'apprentissage, ancêtre des réseaux de neurones modernes.",
-      image: "https://upload.wikimedia.org/wikipedia/commons/3/3d/Mark_I_perceptron.jpeg",
+      image: "history/ai-perceptron.png",
     },
     {
       year: "1966",
@@ -34,7 +34,7 @@ export default function SectionHistoryAITimeline() {
       title: "ELIZA, le premier chatbot",
       description:
         "Joseph Weizenbaum crée ELIZA au MIT, un programme simulant une conversation avec un psychothérapeute, posant les bases du traitement du langage naturel.",
-      image: "https://upload.wikimedia.org/wikipedia/commons/9/9e/ELIZA_conversation.png",
+      image: "history/eliza.png",
     },
     {
       year: "1973",
@@ -42,7 +42,7 @@ export default function SectionHistoryAITimeline() {
       title: "Premier hiver de l'IA",
       description:
         "Le rapport Lighthill critique les limites des systèmes existants. Les financements s'effondrent au Royaume-Uni et aux États-Unis, marquant le premier « hiver de l'IA ».",
-      image: "https://upload.wikimedia.org/wikipedia/commons/6/6c/James_Lighthill.jpg",
+      image: "history/hiver-ia.png",
     },
     {
       year: "1980",
@@ -50,7 +50,7 @@ export default function SectionHistoryAITimeline() {
       title: "Essor des systèmes experts",
       description:
         "Les systèmes experts comme XCON deviennent commercialement viables, relançant l'investissement industriel dans l'IA durant les années 1980.",
-      image: "https://upload.wikimedia.org/wikipedia/commons/5/5d/Symbolics3640_TI.jpg",
+      image: "history/systeme-expert.png",
     },
     {
       year: "1986",
@@ -66,7 +66,7 @@ export default function SectionHistoryAITimeline() {
       title: "Deep Blue bat Kasparov",
       description:
         "Le supercalculateur Deep Blue d'IBM bat le champion du monde d'échecs Garry Kasparov, symbole de la puissance de calcul appliquée à l'IA.",
-      image: "https://upload.wikimedia.org/wikipedia/commons/8/8c/Deep_Blue.jpg",
+      image: "history/game-echec.png",
     },
     {
       year: "2011",
@@ -74,7 +74,7 @@ export default function SectionHistoryAITimeline() {
       title: "IBM Watson gagne à Jeopardy!",
       description:
         "Watson bat les meilleurs champions humains du jeu télévisé Jeopardy!, démontrant la puissance du traitement du langage naturel et de la recherche d'information.",
-      image: "https://upload.wikimedia.org/wikipedia/commons/c/c2/Watson_Jeopardy.jpg",
+      image: "history/IBM-Watson.jpeg",
     },
     {
       year: "2012",
@@ -82,7 +82,7 @@ export default function SectionHistoryAITimeline() {
       title: "AlexNet et le Deep Learning",
       description:
         "AlexNet remporte le concours ImageNet avec une marge spectaculaire grâce aux réseaux de neurones convolutifs sur GPU, déclenchant la révolution du deep learning.",
-      image: "https://upload.wikimedia.org/wikipedia/commons/2/27/Comparison_image_neural_networks.svg",
+      image: "history/alexNet.png",
     },
     {
       year: "2016",
@@ -90,7 +90,7 @@ export default function SectionHistoryAITimeline() {
       title: "AlphaGo bat Lee Sedol",
       description:
         "Le programme AlphaGo de DeepMind bat le champion du monde de Go Lee Sedol, un exploit jugé impossible quelques années plus tôt.",
-      image: "https://upload.wikimedia.org/wikipedia/commons/2/2c/Lee_Sedol_in_2016.jpg",
+      image: "history/game-go.png",
     },
     {
       year: "2017",
@@ -98,7 +98,7 @@ export default function SectionHistoryAITimeline() {
       title: "L'architecture Transformer",
       description:
         "Des chercheurs de Google publient « Attention Is All You Need », introduisant l'architecture Transformer qui deviendra le socle des grands modèles de langage modernes.",
-      image: "https://upload.wikimedia.org/wikipedia/commons/8/8f/Transformer%2C_full_architecture.png",
+      image: "history/transformer.jpeg",
     },
     {
       year: "2020",
@@ -130,7 +130,7 @@ export default function SectionHistoryAITimeline() {
       title: "L'ère des agents IA",
       description:
         "Les modèles évoluent vers des agents autonomes capables de raisonner, d'utiliser des outils et d'agir sur des tâches complexes, transformant entreprises, éducation et administrations à travers le monde.",
-      image: "https://upload.wikimedia.org/wikipedia/commons/4/47/Robot_icon.svg",
+      image: "history/agent-ai.jpeg",
     },
   ]
 

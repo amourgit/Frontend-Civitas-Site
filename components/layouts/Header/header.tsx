@@ -178,7 +178,7 @@ export default function Header() {
       {/* HEADER */}
       <header
         className={`fixed top-0 left-0 right-0 flex items-center justify-between w-full py-2 px-4 sm:px-6 z-[90] transition-colors duration-300 ${
-          isScrolled ? "bg-black" : "bg-white"
+          isScrolled ? "bg-black" : "bg-transparent"
         }`}
       >
         <Link to="/" className="hover:opacity-70 transition-opacity opacity-100">
