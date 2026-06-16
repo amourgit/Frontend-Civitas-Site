@@ -68,14 +68,12 @@ function PageLoader() {
 function CivitasRoutes({ basePath }: { basePath: string }) {
   const bp = basePath === '/' ? '' : basePath;
   return (
-    <Suspense>
       <Routes>
         <Route path={`${bp}/`}    element={<HomePage />} />
         <Route path={`${bp}`}     element={<HomePage />} />
         {/* Catch-all → Home */}
         <Route path="*"           element={<HomePage />} />
       </Routes>
-    </Suspense>
   );
 }
 
