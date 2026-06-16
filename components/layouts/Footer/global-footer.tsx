@@ -33,7 +33,7 @@ const resourcesLinks = [
   { label: "Blog", href: "#blog" },
   { label: "Études de cas", href: "#cas" },
   { label: "FAQ", href: "#faq" },
-  { label: "Contact", href: "#contact" },
+  { label: "Contact", href: "/contact" },
 ]
 
 const socialLinks = [

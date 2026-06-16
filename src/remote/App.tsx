@@ -16,7 +16,8 @@ import Header from "../../components/layouts/Header/header"
 import GlobalFooter from "../../components/layouts/Footer/global-footer"
 
 // ── Pages lazy ────────────────────────────────────────────────
-const HomePage = React.lazy(() => import('../pages/home/home'));
+const HomePage    = React.lazy(() => import('../pages/home/home'));
+const ContactPage = React.lazy(() => import('../pages/contact/contact'));
 
 // ── Props contrat Core ─────────────────────────────────────────
 export interface CoreUser {
@@ -70,10 +71,11 @@ function CivitasRoutes({ basePath }: { basePath: string }) {
   return (
     <Suspense fallback={<PageLoader />}>
       <Routes>
-        <Route path={`${bp}/`}    element={<HomePage />} />
-        <Route path={`${bp}`}     element={<HomePage />} />
+        <Route path={`${bp}/`}         element={<HomePage />} />
+        <Route path={`${bp}`}          element={<HomePage />} />
+        <Route path={`${bp}/contact`}  element={<ContactPage />} />
         {/* Catch-all → Home */}
-        <Route path="*"           element={<HomePage />} />
+        <Route path="*"                element={<HomePage />} />
       </Routes>
     </Suspense>
   );
