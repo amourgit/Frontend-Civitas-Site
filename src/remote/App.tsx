@@ -68,7 +68,7 @@ function PageLoader() {
 function CivitasRoutes({ basePath }: { basePath: string }) {
   const bp = basePath === '/' ? '' : basePath;
   return (
-    <Suspense fallback={<PageLoader />}>
+    <Suspense>
       <Routes>
         <Route path={`${bp}/`}    element={<HomePage />} />
         <Route path={`${bp}`}     element={<HomePage />} />

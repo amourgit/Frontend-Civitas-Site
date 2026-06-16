@@ -24,7 +24,7 @@ export default function HomeMainContent({ className }: { className?: string }) {
       style={{
         width:      "full",
         height:     "auto",
-        background: "transparent",
+        background: "white",
       }}
       className={className}
     >
